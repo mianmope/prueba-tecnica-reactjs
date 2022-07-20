@@ -1,0 +1,27 @@
+
+.tituloClase{
+    vertical-align: center;
+    color: white;
+}
+
+.btn-negro{
+    color:white;
+    background-color: black;
+}
+.btn-negro:hover{
+    color:white;
+    background-color: rgba(0, 0, 0, 0.411);
+}
+
+.reproductor{
+    background: black;
+    height: 700px;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 10%;
+    font-size: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
