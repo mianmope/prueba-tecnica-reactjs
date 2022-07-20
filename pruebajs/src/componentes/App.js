@@ -1,11 +1,13 @@
 import React,{useState, useEffect} from "react";
-import { getDatosApi } from "./api/perfil";
-import './App.css';
-import { obtenerFecha } from "./utils/metodos";
+import { getDatosApi } from "../api/perfil";
+import {Link} from "react-router-dom";
+import '../estilos/App.css';
+import * as utils from "../utils/metodos";
+import * as cte from "../utils/constantes";
 
 
 function App() {
- 
+
   const[datosProfile, setDatosProfile] = useState([]);
   const[datosTraining, setDatosTraining] = useState([]);
   const[datosInstructors, setDatosInstructors] = useState([]);
@@ -13,42 +15,28 @@ function App() {
   useEffect(() => {
     getDatosApi().then((data) => {
       setDatosProfile(data.profile);
-      setDatosTraining(data.training_classes.slice(0,6));
+      setDatosTraining(data.training_classes.slice(cte.PARAM_CERO,cte.NUM_ULTIMAS_CLASES_VISUALIZADAS));
       setDatosInstructors(data.instructors);
     });
    
 
   },[]);
-
  
-  function nombreInstructor (id){
-    var name = "UnKnown";
-    datosInstructors.map(item => {
-      if(id == item.id){
-        name = item.name;
-        return name;
-      }
-        
-    })
-    return name;
-  }
-  const verTodos = ()=>{
-    console.log("PULSADO");
-
+  const eventClase = (clase, name) =>{
+    clase.instructor_id = name;
+    utils.setLocalStorage("clase", clase);
   }
 
   return (
     <>
-      <div style={{background: "#151515"}}>
-        <div className="Web-header">
-            <img src = "https://www.cicloindoor.com/themes/shared/images/logo-big.png" />
-        </div>
+      <div style={{backgroundColor: "#151515"}}>
+     
         <div className="container">
-        
+      
           <div className="row">
 
             <div className="col-4">
-              <img src = {datosProfile.avatar} />
+              <img src = {datosProfile.avatar} alt=""/>
             </div>
 
             <div className="col-4 d-flex flex-column justify-content-center text-light">
@@ -101,27 +89,32 @@ function App() {
           <div className="row">
             <h5 className="col-6 text-left text-light"> ÚLTIMAS CLASES</h5>
             <div className="col-6 text-end text-light">
-              <button type="button" className="btn-naranja" onClick={verTodos}> VER TODAS</button>
+              <button type="button" className="btn-naranja"><Link to='/clases'>VER TODAS</Link></button>
             </div>
           </div>
 
           <div className="row">
             {
               datosTraining.map(item =>(
-                <div key={item.id} className="columnasInfo col-4 text-light ">
-                  <div key = {item.id} className="row">
-                    <div className="col-6 text-left text-light">
-                      <img src = "https://www.cicloindoor.com/themes/shared/images/logo-big.png" />
+                <div key={item.id} className="columnasInfo col-4 text-light" onClick={() => eventClase(item, utils.getInstructorById(datosInstructors, item.instructor_id).name)}>
+                
+                  <Link to='/reproductor'>
+                    <div className="row">
+                      <div className="col-6 text-left text-light">
+                        <img src = "https://www.cicloindoor.com/themes/shared/images/logo-big.png" alt=""/>
+                      </div>
+                
+                      <div className="col-6 text-center text-light">
+                        <p>{utils.obtenerFecha(item.published)}</p>
+                      </div>
+                    
                     </div>
-                    <div className="col-6 text-center text-light">
-                      <p>{obtenerFecha(item.published)}</p>
+                    <div className="row info-clases">
+                      <h5>{item.name}</h5>
+                      <p>{utils.getInstructorById(datosInstructors, item.instructor_id).name}</p>
                     </div>
-                  
-                  </div>
-                  <div className="row info-clases">
-                    <h5>{item.name}</h5>
-                    <p>{nombreInstructor(item.instructor_id)}</p>
-                  </div>
+
+                  </Link>
               </div>
               ))
               

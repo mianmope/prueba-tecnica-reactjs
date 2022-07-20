@@ -16,3 +16,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.web-header{
+  background: black;
+  padding-left: 2%;
+ 
+}
+.web-header > img{
+  height: 90px;
+}
