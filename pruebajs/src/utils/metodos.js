@@ -22,7 +22,7 @@ export function obtenerFechaReducida(tiempo) {
 }
 
 export function obtenerMinutosClase(segundos) {
-  return Math.ceil(segundos / cte.NUM_ULTIMAS_CLASES_VISUALIZADAS);
+  return Math.ceil(segundos / cte.RELACION_SEGUNDOS_MINUTOS);
 }
 
 export function getInstructorById(datosInstructors, id) {
