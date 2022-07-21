@@ -1,38 +1,52 @@
+import * as cte from "./constantes";
 
+export function obtenerFechaCompleta(tiempo) {
+  var fecha = new Date(tiempo);
+  var fechaFormateada = fecha.toLocaleDateString("es-es", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
 
-export function obtenerFecha(tiempo){
-    var fecha = new Date(tiempo);
-    var fechaFormateada = fecha.toLocaleDateString('es-es',{day:"numeric", month:"short", year:"numeric"});
-
-    return fechaFormateada;
-  }
-export function getInstructorById (datosInstructors, id){
-    
-    var obj;
-    datosInstructors.map(item => {
-      if(id === item.id){
-        obj = item;
-      } 
-    })
-    return obj != null ? obj: "";
+  return fechaFormateada;
 }
 
-export function setLocalStorage(clave, valor){
+export function obtenerFechaReducida(tiempo) {
+  var fecha = new Date(tiempo);
+  var fechaFormateada = fecha.toLocaleDateString("es-es", {
+    day: "numeric",
+    month: "short",
+  });
 
- try{
+  return fechaFormateada;
+}
+
+export function obtenerMinutosClase(segundos) {
+  return Math.ceil(segundos / cte.NUM_ULTIMAS_CLASES_VISUALIZADAS);
+}
+
+export function getInstructorById(datosInstructors, id) {
+  var obj;
+  datosInstructors.map((item) => {
+    if (id === item.id) {
+      obj = item;
+    }
+  });
+  return obj != null ? obj : "";
+}
+
+export function setLocalStorage(clave, valor) {
+  try {
     window.localStorage.setItem(clave, JSON.stringify(valor));
-  }
-  catch(error){
+  } catch (error) {
     console.error(error);
   }
 }
 
-export function getLocalStorage(clave){
-
-  try{
-     return JSON.parse(window.localStorage.getItem(clave));
-   }
-   catch(error){
-     console.error(error);
-   }
+export function getLocalStorage(clave) {
+  try {
+    return JSON.parse(window.localStorage.getItem(clave));
+  } catch (error) {
+    console.error(error);
+  }
 }

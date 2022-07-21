@@ -5,16 +5,16 @@ p{
     margin: 0%;
     font-size: 12px;
 }
+
 .contenedorClase{
+    background-color: black;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: red;
+    margin-top: 15%;
+    margin-right: 15px;
     width: 280px;
     height: 200px;
-    background: url("https://cdn0.bestcycling.es/image_covers/images/000/309/443/m.png?1629198190");
-    background-size: cover;
-    background-position: center;
 }
 
 .item-top{
@@ -40,6 +40,7 @@ p{
     display: flex;
     flex-direction: row;
     justify-content:center;
+    vertical-align:middle;
     align-items: center;
     width: 33%;
 }
@@ -58,3 +59,21 @@ p{
     align-items: center;
     width: 33%;
 }
+.contenedorTodasClases{
+    width: 900px;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+.contenedor{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
+.niveles{
+    height:50%;
+    margin-left: 6%;
+}
+

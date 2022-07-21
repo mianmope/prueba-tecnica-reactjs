@@ -11,15 +11,15 @@ import Reproductor from './componentes/Reproductor';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
- 
-  
-    <BrowserRouter>
+  <>
+   
     <div className='web-header'>
         
-      <img src = "https://www.cicloindoor.com/themes/shared/images/logo-big.png" alt ="" />
-       
+        <img src = "https://www.cicloindoor.com/themes/shared/images/logo-big.png" alt ="" />
+        
     </div>
-       
+  
+    <BrowserRouter>
       <Routes>
           <Route  path='/' element={<App />}></Route>
           <Route  path='/clases' element={<Clases />}></Route>
@@ -27,6 +27,8 @@ root.render(
           <Route  path='*' element={<h1>Not Found</h1>}></Route>
         </Routes>
     </BrowserRouter>
+  </>
+   
    
   
 );

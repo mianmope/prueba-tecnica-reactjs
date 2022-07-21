@@ -87,3 +87,22 @@ a:link,a:visited,a:active{
   font-style: none;
   text-decoration: inherit;
 }
+.contenedorEstadisticas{
+  width: 450px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+.itemEstadisticas{
+  width: 100px;
+  margin: 1%;
+  text-align: center;
+}
+.cont{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
