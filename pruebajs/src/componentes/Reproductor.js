@@ -1,40 +1,54 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import "../estilos/Reproductor.css";
 import {useNavigate } from "react-router-dom";
 import * as utils from "../utils/metodos";
-import * as cte from "../utils/constantes";
+import ReactPlayer from "react-player";
+import video from '../assets/cuentaAtras.mp4';
+
 
 function Reproductor() {
-    var contador = cte.CONTADOR_VIDEO;
-   
-    const [datosClase, setDatosClase] = useState([]);
+    const [datosClases, setDatosClases] = useState([]);
     const navigate = useNavigate();
+    var clase = datosClases;
 
     useEffect(() => {
-        setDatosClase(utils.getLocalStorage("clase"));
+        setDatosClases(utils.getLocalStorage("clase"));
     }, []);
     
-    const actualizarTiempo = () =>{
-        var objContador = document.getElementById('contador');
-        objContador.innerHTML = `${contador}`;
-        if(contador!=0)
-            contador -=1;
+    const videoCompletado = () =>{
+        console.log("Completado");
+        navigate(-1);
     }
+    const volverAtras = () =>{
+        document.getElementById("video").setAttribute("playing",false);
+        console.log("Atras");
+        navigate(-1);
+    }
+    
+    if(datosClases.length > 1){
+        console.log("Entro");
+        clase = datosClases.indexOf(1);
+        console.log(JSON.stringify(clase));
+    }
+
     return (
         <>
             <div className="d-flex align-items-center">
                 <div className="m-5">
-                    <button type="button" className="btn-negro btn-circle btn-xl" onClick={() => navigate(-1)}>
+                    <button type="button" className="btn-negro btn-circle btn-xl" onClick={volverAtras}>
                         {"<<"}
                     </button>
             
                 </div>
                 <div className="tituloClase ">
-                    <h2>{datosClase.name}</h2>
-                    <h5>{datosClase.instructor_id}</h5>
+                    <h2>{clase.name}</h2>
+                    <h5>{clase.instructor_id}</h5>
                 </div>
             </div>
-            <div id="contador" className="reproductor">{setInterval(actualizarTiempo,1000)}</div>
+            <div className="reproductor">
+                <ReactPlayer id="video" url={video} playing onEnded={videoCompletado}/>
+            </div>
+            
         </>
     );
 }

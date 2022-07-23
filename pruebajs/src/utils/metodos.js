@@ -50,3 +50,4 @@ export function getLocalStorage(clave) {
     console.error(error);
   }
 }
+
