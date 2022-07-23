@@ -21,23 +21,18 @@ function Clases() {
         //var array = JSON.parse( JSON.stringify(datosTraining));
         //console.log(array);
         var clasesFiltradas = datosTraining.filter((elemento) =>{if(checkboxSeleccionado.includes(elemento.id.toString())){return elemento}});
-        console.log("Tamaño es :" + JSON.stringify(clasesFiltradas));
+        clasesFiltradas.map(elemento => {elemento.instructor_id = utils.getInstructorById(datosInstructors,elemento.instructor_id).name});
         utils.setLocalStorage("clase", clasesFiltradas);
     }
     const cambiarCheckBox = (e) =>{
-        console.log(e.target.value);
         var aux = null;
         if(checkboxSeleccionado.includes(e.target.value)){
-            console.log("ENTRA AL IF--");
             aux = checkboxSeleccionado.filter(elemento=> elemento!==e.target.value);
         }
         else{
             aux = checkboxSeleccionado.concat(e.target.value);
         }
         setcheckboxSeleccionado(aux);
-        console.log("AUXILIAR----");
-        console.log(aux);
-        console.log("AUXILIAR----");
     }
     
     const eventClase = (clase, name) =>{
