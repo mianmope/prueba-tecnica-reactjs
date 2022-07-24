@@ -26,6 +26,7 @@ function Clases() {
         <>
             <Link to="/reproductor">
                 <div className="contReproducir">
+                    
                     <div className="botonReproducir">
                         REPRODUCIR AUTOMÁTICAMENTE
                     </div>
