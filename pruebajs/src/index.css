@@ -25,9 +25,21 @@ code {
 }
 
 .web-header {
+    display: flex;
     background: black;
+    justify-content: space-between;
+    align-items: center;
     padding-left: 2%;
 }
 .web-header > img {
     height: 90px;
+}
+.web-header * button{
+    margin-top: 2%;
+    margin-right: 30px;
+    padding: 8px;
+    border-radius: 5px;
+    color: white;
+    width: auto;
+    background: #FF7C00; 
 }

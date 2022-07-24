@@ -14,6 +14,7 @@ import Layout from "./layout/Layout";
 import App from "./componentes/App";
 import Clases from "./componentes/Clases";
 import Reproductor from "./componentes/Reproductor";
+import Subscripcion from "./componentes/Subscripcion";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -26,6 +27,7 @@ root.render(
                         <Route index element={<App />}></Route>
                         <Route path="/clases" element={<Clases />}></Route>
                         <Route path="/reproductor" element={<Reproductor />}></Route>
+                        <Route path="/subscripcion" element={<Subscripcion />}></Route>
                         <Route path="*" element={<h1>Not Found</h1>}></Route>
                     </Route>
                 </Routes>
