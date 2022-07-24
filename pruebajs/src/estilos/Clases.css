@@ -98,12 +98,21 @@ p{
     color: rgba(255, 255, 255, 0);
     background-color: #ff7b0000;
 }
+.contReproducir{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
 .botonReproducir{
+    
     margin-top: 2%;
-    text-align: end;
+    margin-right: 15%;
+    text-align: center;
     padding: 8px;
     color: white;
-    background-color: #FF7C00; 
+    width: auto;
+    background: #FF7C00; 
+   
 }
 .botonReproducir:hover{
     padding: 8px;

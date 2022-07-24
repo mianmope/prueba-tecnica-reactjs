@@ -24,8 +24,14 @@ function Clases() {
 
     return (
         <>
-            <Link className="botonReproducir" to="/reproductor">
-                REPRODUCIR AUTOMÁTICAMENTE
+            <Link to="/reproductor">
+                <div className="contReproducir">
+                    
+                    <div className="botonReproducir">
+                        REPRODUCIR AUTOMÁTICAMENTE
+                    </div>
+                </div> 
+             
             </Link>
 
             <div className="contenedor">
