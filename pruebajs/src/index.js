@@ -1,36 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import{BrowserRouter, Route, Routes} from 'react-router-dom';
-import './index.css';
-import App from './componentes/App';
-import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Clases from './componentes/Clases';
-import Reproductor from './componentes/Reproductor';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import reportWebVitals from "./reportWebVitals";
+
+import { TrainingProvider } from "./context/TrainingProvider";
+
+import Layout from "./layout/Layout";
+
+import App from "./componentes/App";
+import Clases from "./componentes/Clases";
+import Reproductor from "./componentes/Reproductor";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
-  <>
-   
-    <div className='web-header'>
-        
-        <img src = "https://www.cicloindoor.com/themes/shared/images/logo-big.png" alt ="" />
-        
-    </div>
-  
-    <BrowserRouter>
-      <Routes>
-          <Route  path='/' element={<App />}></Route>
-          <Route  path='/clases' element={<Clases />}></Route>
-          <Route  path='/reproductor' element={<Reproductor />}></Route>
-          <Route  path='*' element={<h1>Not Found</h1>}></Route>
-        </Routes>
-    </BrowserRouter>
-  </>
-   
-   
-  
+    <>
+        <BrowserRouter>
+            <TrainingProvider>
+                <Routes>
+                    <Route path="/" element={<Layout />}>
+                        <Route index element={<App />}></Route>
+                        <Route path="/clases" element={<Clases />}></Route>
+                        <Route path="/reproductor" element={<Reproductor />}></Route>
+                        <Route path="*" element={<h1>Not Found</h1>}></Route>
+                    </Route>
+                </Routes>
+            </TrainingProvider>
+        </BrowserRouter>
+    </>
 );
 
 // If you want to start measuring performance in your app, pass a function
