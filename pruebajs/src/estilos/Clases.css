@@ -94,6 +94,10 @@ p{
     border-radius: 60px;
     border: #FF7C00;
 }
+.btnCompletada:disabled{
+    color: rgba(255, 255, 255, 0);
+    background-color: #ff7b0000;
+}
 .botonReproducir{
     margin-top: 2%;
     text-align: end;

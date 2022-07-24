@@ -10,7 +10,7 @@ import { FormGroup, Input } from "reactstrap";
 import useTraining from "../hooks/useTraining";
 
 function Clases() {
-    const { training, instructor, playlist, setPlaylist } = useTraining();
+    const { training, instructor, playlist, videosCompletados, setPlaylist } = useTraining();
 
     const handleChange = (item) => {
         const exists = playlist.find((i) => i.id === item.id);
@@ -74,7 +74,7 @@ function Clases() {
                                 <div className="contenedorNavegacion">enlace</div>
                             </Link>
                             <div>
-                                <button className="btnCompletada">Completada</button>
+                                <button className="btnCompletada" disabled={utils.videoCompletado(videosCompletados, item.id)}>Completada</button>
                             </div>
 
                             <div className="item-bot">

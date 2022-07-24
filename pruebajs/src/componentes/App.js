@@ -6,6 +6,7 @@ import "../estilos/App.css";
 import * as utils from "../utils/metodos";
 
 import useTraining from "../hooks/useTraining";
+import * as cte from "../utils/constantes";
 
 function App() {
     const { profile, training, instructor, playlist, setPlaylist } = useTraining();
@@ -85,7 +86,7 @@ function App() {
                 </div>
 
                 <div className="row">
-                    {training.map((item) => (
+                    {training.slice(0,cte.NUM_ULTIMAS_CLASES_VISUALIZADAS).map((item) => (
                         <div key={item.id} className="columnasInfo col-4 text-light">
                             <Link
                                 onClick={() => {

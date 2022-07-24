@@ -10,8 +10,7 @@ import useTraining from "../hooks/useTraining";
 function Reproductor() {
     const [index, setIndex] = useState(0);
     const [video, setVideo] = useState(null);
-
-    const { instructor, playlist, setPlaylist } = useTraining();
+    const { instructor, playlist, videosCompletados, setVideosCompletados, setPlaylist } = useTraining();
 
     const navigate = useNavigate();
 
@@ -26,12 +25,13 @@ function Reproductor() {
 
     const handleEnded = () => {
         if (index < playlist.length) {
+            setVideosCompletados([...videosCompletados, playlist[index-1]]);
             setVideo(playlist[index]);
             setIndex(index + 1);
-
             const testVideo = document.getElementById("video");
             testVideo.play();
         } else {
+            setVideosCompletados([...videosCompletados, playlist[index-1]]);
             setPlaylist([]);
             navigate(-1);
         }
@@ -64,7 +64,7 @@ function Reproductor() {
                     id="video"
                     src={testVideo}
                     autoPlay
-                    width="100%"
+                    width="50%"
                     height="auto"
                     onEnded={handleEnded}
                 />

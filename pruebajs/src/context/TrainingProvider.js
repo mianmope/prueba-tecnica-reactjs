@@ -8,6 +8,7 @@ export const TrainingProvider = ({ children }) => {
     const [training, setTraining] = useState([]);
     const [instructor, setInstructors] = useState([]);
     const [playlist, setPlaylist] = useState([]);
+    const [videosCompletados, setVideosCompletados] = useState([]);
 
     useEffect(() => {
         async function getData() {
@@ -34,6 +35,8 @@ export const TrainingProvider = ({ children }) => {
                 setInstructors,
                 playlist,
                 setPlaylist,
+                videosCompletados,
+                setVideosCompletados
             }}
         >
             {children}
