@@ -17,7 +17,7 @@ function Subscripcion() {
                     <p>Autorenovar automáticamente</p>
                 </div>
                 <div className="containerSubs">
-                    <div><h3>1 minuto</h3></div>
+                    <div class="textoSub"><h3>1 minuto</h3></div>
                     <div><h3>5 minutos</h3></div>
                     <div><h3>10 minutos</h3></div>
                 </div>
